@@ -4,6 +4,9 @@
 
 The **Grav Seo** Plugin is for [Grav CMS](http://github.com/getgrav/grav). User-friendly SEO plugin for Grav CMS
 
+## Demo
+
+![](https://github.com/paulmassen/grav-seo/blob/master/seoplugin.gif?raw=true)
 
 ## Installation
 
