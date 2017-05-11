@@ -48,3 +48,5 @@ enabled: true
 
 - [ ] Future plans, if any
 
+# grav-seo
+An user-friendly SEO plugin for Grav CMS
