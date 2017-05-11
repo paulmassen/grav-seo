@@ -46,5 +46,10 @@ enabled: true
 
 ## To Do
 
-- [ ] Future plans, if any
-
+- [ ] Rank checker for a given keyword
+- [ ] Keyword presence analysis
+- [ ] Image alt checking
+- [ ] Progress bar
+- [ ] Dashboard for SEO data
+- [ ] Rich Snippet visualisation
+- [ ] Schema.org microdata generation

@@ -25,7 +25,7 @@ form:
         0: Disabled
       validate:
         type: bool
-    text_var:
+    site_title:
       type: text
-      label: Text Variable
-      help: Text to add to the top of a page
+      label: Main site title
+      help: Main site title
