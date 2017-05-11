@@ -20,6 +20,26 @@ class GravSEOPlugin extends Plugin
      *     callable (or function) as well as the priority. The
      *     higher the number the higher the priority.
      */
+        /**
+     * Get list of form field types specified in this plugin. Only special types needs to be listed.
+     *
+     * @return array
+     */
+    public function onTwigTemplatePaths()
+    {
+        $this->grav['twig']->twig_paths[] = __DIR__ . '/templates';
+    }
+    public function getFormFieldTypes()
+    {
+        return [
+            'display' => [
+               
+            ],
+            'twitter' => [
+                
+            ]
+        ];
+    }
     public static function getSubscribedEvents()
     {
         return [
@@ -34,6 +54,10 @@ class GravSEOPlugin extends Plugin
     {
         // Don't proceed if we are in the admin plugin
         if ($this->isAdmin()) {
+            $this->enable([
+                'onTwigTemplatePaths'  => ['onTwigTemplatePaths', 0],
+
+            ]);
             return;
         }
 
