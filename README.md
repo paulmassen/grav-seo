@@ -1,8 +1,9 @@
 # Grav Seo Plugin
 
-**This README.md file should be modified to describe the features, installation, configuration, and general usage of this plugin.**
+## Work in progress - Does not work yet!
 
 The **Grav Seo** Plugin is for [Grav CMS](http://github.com/getgrav/grav). User-friendly SEO plugin for Grav CMS
+
 
 ## Installation
 
