@@ -34,13 +34,14 @@ var myString = JSON.stringify(formObject);
       var deecode = decodeURIComponent(myString);
       var removestring = deecode.replace(/data|header|\[/g, '');
       var removebracket = removestring.replace(/]/g, '');
-        $('#json_output').text(removebracket);
+       $('span[role="presentation"]').append(removebracket);
+        //CodeMirror.doc.setValue(removebracket);
     });
     
 });
     </script>
     <a id="btnsubmit">Envoyer</a>
-    <div id="json_output"></div>
+    <div id="oldjson_output" style="width:600px; color:#fff; background-color: #253a47; margin-left: auto; margin-right: auto; height:600px; word-wrap: break-word; padding: 20px;"></div>
     {% if field.text %}
     {% endif %}
 

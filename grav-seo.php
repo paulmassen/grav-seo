@@ -12,76 +12,51 @@ class GravSEOPlugin extends Plugin
 {
     /**
      * @return array
-     *
-     * The getSubscribedEvents() gives the core a list of events
-     *     that the plugin wants to listen to. The key of each
-     *     array section is the event that the plugin listens to
-     *     and the value (in the form of an array) contains the
-     *     callable (or function) as well as the priority. The
-     *     higher the number the higher the priority.
      */
-        /**
-     * Get list of form field types specified in this plugin. Only special types needs to be listed.
-     *
-     * @return array
-     */
-    public function onTwigTemplatePaths()
-    {
-        $this->grav['twig']->twig_paths[] = __DIR__ . '/templates';
-    }
-    public function getFormFieldTypes()
-    {
-        return [
-            'display' => [
-               
-            ],
-            'twitter' => [
-                
-            ]
-        ];
-    }
     public static function getSubscribedEvents()
     {
         return [
-            'onPluginsInitialized' => ['onPluginsInitialized', 0]
+            'onPluginsInitialized' => ['onPluginsInitialized', 0],
+            'onGetPageBlueprints'  => ['onGetPageBlueprints', 0],
         ];
     }
-
     /**
-     * Initialize the plugin
+     * Add page blueprints
+     *
+     * @param Event $event
+     */
+    public function onGetPageBlueprints(Event $event)
+    {
+        /** @var Types $types */
+        $types = $event->types;
+        $types->scanBlueprints('plugins://grav-seo/blueprints/');
+    }
+    /**
+     * Initialize configuration
      */
     public function onPluginsInitialized()
     {
-        // Don't proceed if we are in the admin plugin
         if ($this->isAdmin()) {
-            $this->enable([
+          $this->enable([
                 'onTwigTemplatePaths'  => ['onTwigTemplatePaths', 0],
 
             ]);
             return;
         }
-
-        // Enable the main event we are interested in
         $this->enable([
-            'onPageContentRaw' => ['onPageContentRaw', 0]
+            'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
+           // 'onTwigSiteVariables' => ['onTwigSiteVariables', 0]
         ]);
     }
-
     /**
-     * Do some work for this event, full details of events can be found
-     * on the learn site: http://learn.getgrav.org/plugins/event-hooks
-     *
-     * @param Event $e
+     * Add current directory to twig lookup paths.
      */
-    public function onPageContentRaw(Event $e)
+    public function onTwigTemplatePaths()
     {
-        // Get a variable from the plugin configuration
-        $text = $this->grav['config']->get('plugins.grav-seo.text_var');
-
-        // Get the current raw content
-        $content = $e['page']->getRawContent();
-
-        // Prepend the output with the custom text and set back on the page
-        $e['page']->setRawContent($text . "\n\n" . $content);
+        $this->grav['twig']->twig_paths[] = __DIR__ . '/templates';
     }
+    /**
+     * Set needed variables to display cart.
+     */
+
 }

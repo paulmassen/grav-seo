@@ -1,0 +1,34 @@
+title: Lightslider
+'@extends': default
+
+form:
+  validation: loose
+
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        options:
+          type: tab
+
+          fields:
+            header.robots:
+              type: select
+              label: Sélectionner
+              options:
+                2: index
+                3: noindex
+                4: noimageindex
+                5: none
+                6: follow
+                7: nofollow
+                8: noarchive
+                9: nocache
+                10: nosnippet
+                11: noodp
+                12: noydir
+            header.canonical:
+              type: text
+              label: Canonical url
